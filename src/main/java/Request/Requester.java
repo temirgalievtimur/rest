@@ -10,7 +10,7 @@ import org.apache.http.util.EntityUtils;
 import java.io.IOException;
 
 
-public class Requester {
+public class Requester extends Thread{
     private String url;
     private String body;
     private HttpClient client;
@@ -65,5 +65,16 @@ public class Requester {
         HttpPost request = new HttpPost(url);
         HttpResponse response = client.execute(request);
         return EntityUtils.toString(response.getEntity());
+    }
+
+    @Override
+    public void run() {
+        try {
+            executeQueryPOST();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
