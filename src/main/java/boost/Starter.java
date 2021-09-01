@@ -34,6 +34,7 @@ public class Starter {
         req.setBody("<xml>awdawdawdad</xml>");
         req.setUrl("http://localhost:9090/starter/checker");
         req.start();
+        ////////////
 
         logger.info("искусственный запрос создан с таким телом "  + req.getBody());
         return response;
